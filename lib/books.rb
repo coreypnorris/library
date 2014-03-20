@@ -1,8 +1,7 @@
 class Books
-  attr_reader :author, :title, :id
+  attr_reader :title, :id
 
   def initialize(attributes)
-    @author = attributes['author']
     @title = attributes['title']
     @id = attributes['id'].to_i
   end
@@ -14,12 +13,12 @@ class Books
   end
 
   def save
-    results = DB.exec("INSERT INTO books (author, title) VALUES ('#{author}', '#{title}') RETURNING id;")
+    results = DB.exec("INSERT INTO books (title) VALUES ('#{title}') RETURNING id;")
     @id = results.first['id'].to_i
   end
 
   def ==(another_book)
-    self.author == another_book.author && self.title == another_book.title && self.id == another_book.id
+    self.title == another_book.title && self.id == another_book.id
   end
 
   def self.all
@@ -35,23 +34,9 @@ class Books
     DB.exec("DELETE FROM books WHERE id = #{@id};")
   end
 
-  def edit_author(new_author)
-    DB.exec("UPDATE books SET author = '#{new_author}' WHERE id = #{@id};")
-    @author = new_author
-  end
-
   def edit_title(new_title)
     DB.exec("UPDATE books SET title = '#{new_title}' WHERE id = #{@id};")
     @title = new_title
-  end
-
-  def self.find_by_author(search_author)
-    results = DB.exec("SELECT * FROM books WHERE author = '#{search_author}';")
-    books = []
-    results.each do |result|
-      books << Books.new(result)
-    end
-    books
   end
 
   def self.find_by_title(search_title)

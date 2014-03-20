@@ -115,6 +115,40 @@ def delete_book
   main_menu
 end
 
+def search_book
+  puts "\n\n"
+
+  puts "Do you want to search by author or by title?"
+  puts "A - for author"
+  puts "T - for title"
+
+  case gets.chomp.upcase
+  when 'A'
+    puts "Enter the name of the author you would like to search for"
+    input = gets.chomp
+    books = Books.find_by_author(input)
+    puts "Here are the books written by #{input}"
+    books.each_with_index do |book, index|
+      puts "#{index+1}: #{book.title} by #{book.author}"
+    end
+    main_menu
+  when 'T'
+    puts "Enter the title of the book you would like to search for"
+    input = gets.chomp
+    books = Books.find_by_title(input)
+    puts "Here are the books with the title #{input}"
+    books.each_with_index do |book, index|
+      puts "#{index+1}: #{book.title} by #{book.author}"
+    end
+    main_menu
+  else
+    puts "Invalid input"
+    search_book
+  end
+
+  puts "\n\n"
+end
+
 welcome
 
 
