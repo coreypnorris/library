@@ -44,4 +44,23 @@ class Books
     DB.exec("UPDATE books SET title = '#{new_title}' WHERE id = #{@id};")
     @title = new_title
   end
+
+  def self.find_by_author(search_author)
+    results = DB.exec("SELECT * FROM books WHERE author = '#{search_author}';")
+    books = []
+    results.each do |result|
+      books << Books.new(result)
+    end
+    books
+  end
+
+  def self.find_by_title(search_title)
+    results = DB.exec("SELECT * FROM books WHERE title = '#{search_title}';")
+    books = []
+    results.each do |result|
+      books << Books.new(result)
+    end
+    books
+  end
+
 end

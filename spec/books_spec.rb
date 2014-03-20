@@ -43,7 +43,7 @@ describe 'Books' do
     end
   end
 
-  describe 'delete' do
+  describe '#delete' do
     it 'should delete books from the database' do
       test_book = Books.create({'author' => 'Billy Watson', 'title' => 'The Red Dog'})
       test_book.delete
@@ -51,7 +51,7 @@ describe 'Books' do
     end
   end
 
-  describe 'edit_author' do
+  describe '#edit_author' do
     it 'changes the author of the book in the database and the current instance' do
       test_book = Books.create({'author' => 'Billy Watson', 'title' => 'The Red Dog'})
       test_book.edit_author("Jenny Smith")
@@ -61,13 +61,31 @@ describe 'Books' do
     end
   end
 
-  describe 'edit_title' do
+  describe '#edit_title' do
     it 'chnages the title of the book in the database and the current instance' do
       test_book = Books.create({'author' => 'Billy Watson', 'title' => 'The Red Dog'})
       test_book.edit_title("The Red Sea")
       test_book.title.should eq "The Red Sea"
       results = DB.exec("SELECT * FROM books WHERE id = #{test_book.id}")
       results.first['title'].should eq 'The Red Sea'
+    end
+  end
+
+  describe '.find_by_author' do
+    it 'searches for books by author' do
+      test_book1 = Books.create({'author' => 'Billy Watson', 'title' => 'The Red Dog'})
+      test_book2 = Books.create({'author' => 'Jenny Smith', 'title' => 'The Red Sea'})
+      test_book3 = Books.create({'author' => 'Arthur Lewis', 'title' => 'The Red Ball'})
+      Books.find_by_author('Arthur Lewis').should eq [test_book3]
+    end
+  end
+
+  describe '.find_by_title' do
+    it 'searches for books by title' do
+      test_book1 = Books.create({'author' => 'Billy Watson', 'title' => 'The Red Dog'})
+      test_book2 = Books.create({'author' => 'Jenny Smith', 'title' => 'The Red Sea'})
+      test_book3 = Books.create({'author' => 'Arthur Lewis', 'title' => 'The Red Ball'})
+      Books.find_by_title('The Red Sea').should eq [test_book2]
     end
   end
 end
