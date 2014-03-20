@@ -45,7 +45,7 @@ def add_book
   author = gets.chomp
   puts "Enter the title of the book"
   title = gets.chomp
-  Books.create({'author' => author, 'title' => title})
+  title = Books.create({'author' => author, 'title' => title})
   puts "The book has been added to the database"
   main_menu
   puts "\n\n"
