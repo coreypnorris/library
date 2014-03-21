@@ -36,15 +36,6 @@ attr_reader :author_id, :title_id, :id
     DB.exec("DELETE FROM books WHERE id = #{@id};")
   end
 
-<<<<<<< HEAD
-  def self.search_by_author(user_input)
-    DB.exec("SELECT * FROM books JOIN books ON (")
-
-
-    books = []
-    the_authors_books.each do |book|
-      books << Books.new(book)
-=======
   def self.search_by_author(authors_name)
     the_author = DB.exec("SELECT * FROM authors WHERE name = '#{authors_name}';")
     the_author = the_author.id
@@ -58,7 +49,6 @@ attr_reader :author_id, :title_id, :id
     books = []
     the_authors_titles.each do |title|
       books << Titles.new(title)
->>>>>>> b8667bfb5f6db63fb6c8175eb7d47f41cdbf5a77
     end
     books
   end

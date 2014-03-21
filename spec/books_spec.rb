@@ -60,46 +60,4 @@ describe 'Books' do
       Books.all.should eq []
     end
   end
-<<<<<<< HEAD
-
-  describe '.search_by_author' do
-    it 'should return all books written by the author' do
-      test_title1 = Titles.create({'name' => 'The Scarlet Letter'})
-      test_author1 = Authors.create({'name' => 'Nathaniel Hawthorne'})
-      test_book1 = Books.create({'title_id' => test_title1.id, 'author_id' => test_author1.id})
-
-      test_title2 = Titles.create({'name' => 'Crime and Punishment'})
-      test_author2 = Authors.create({'name' => 'Fyodor Dostoevsky'})
-      test_book2 = Books.create({'title_id' => test_title2.id, 'author_id' => test_author2.id})
-
-      test_title3 = Titles.create({'name' => 'Notes from Underground'})
-      test_author3 = Authors.create({'name' => 'Fyodor Dostoevsky'})
-      test_book3 = Books.create({'title_id' => test_title3.id, 'author_id' => test_author3.id})
-
-      Books.search_by_author('Fyodor Dostoevsky').should eq [test_book2, test_book3]
-    end
-  end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-end
->>>>>>> b8667bfb5f6db63fb6c8175eb7d47f41cdbf5a77
