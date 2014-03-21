@@ -58,36 +58,3 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  # def edit_author(new_author)
-  #   DB.exec("UPDATE books SET author = '#{new_author}' WHERE id = #{@id};")
-  #   @author = new_author
-  # end
-
-  # def self.find_by_author(search_author)
-  #   results = DB.exec("SELECT * FROM books WHERE author = '#{search_author}';")
-  #   books = []
-  #   results.each do |result|
-  #     books << Books.new(result)
-  #   end
-  #   books
-  # end
