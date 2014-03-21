@@ -60,6 +60,7 @@ describe 'Books' do
       Books.all.should eq []
     end
   end
+<<<<<<< HEAD
 
   describe '.search_by_author' do
     it 'should return all books written by the author' do
@@ -99,3 +100,6 @@ end
 
 
 
+=======
+end
+>>>>>>> b8667bfb5f6db63fb6c8175eb7d47f41cdbf5a77
