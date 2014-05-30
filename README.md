@@ -2,7 +2,7 @@
 
 ####This is a library catalog program built using Ruby with  PSQL on the back end.
 
-To use this program you'll need Ruby and PSQL installed on your machine. [Here's a link to help you install Ruby](http://www.learnhowtoprogram.com/lessons/installing-ruby) and [here's a link to help you install Postgres](http://www.learnhowtoprogram.com/lessons/installing-postgres). When you have Ruby and Postres installed, open postgres in your terminal and enter the following commands.
+To use this program you'll need Ruby and PSQL installed on your machine. [Here's a link to help you install Ruby](http://www.learnhowtoprogram.com/lessons/installing-ruby) and [here's a link to help you install Postgres](http://www.learnhowtoprogram.com/lessons/installing-postgres). When you have Ruby and Postgres installed, open Postgres in your terminal and enter the following commands.
 
 * create database library;
 * \c library
